@@ -1,27 +1,35 @@
 import { useState } from "react";
 import { Card } from "../layouts/Cards";
 import type { ProfileData } from "../../data/profileData";
-import type { HeaderMenu } from "../../App";
+import type { HeaderMenu } from "../../data/menuHeader";
 
-interface ProfileProp extends ProfileData{
-  onClosed:(name:HeaderMenu)=>void
+interface ProfileProp extends ProfileData {
+  onClosed: (name: HeaderMenu) => void;
+  className?: string;
 }
 
-export const Profile = ({ years, img, info, name,onClosed }: ProfileProp) => {
-  const [showFullInfo, setShowFullInfo] = useState(false); 
+export const Profile = ({
+  years,
+  img,
+  info,
+  name,
+  onClosed,
+  className,
+}: ProfileProp) => {
+  const [showFullInfo, setShowFullInfo] = useState(false);
   const maxPreviewLength = 72;
 
   const data = [
     { label: "Nombre", value: name },
-    { label: "Edad", value: `${years} Años`},
+    { label: "Edad", value: `${years} Años` },
   ];
 
   return (
-    <Card 
-      title="Perfil" 
+    <Card
+      title="Perfil"
       classNameTitle="bg-gradient-to-r from-indigo-800 to-purple-800 text-white py-2 px-4"
-      className="w-full sm:w-[50%] md:w-[30%] lg:w-[30%] min-w-[250px]"
-      onClosed={()=>onClosed("profile")}
+      onClosed={() => onClosed("profile")}
+      className={`${className} w-full sm:w-[50%] md:w-[30%] lg:w-[30%] min-w-[250px]`}
     >
       <div className="flex flex-col justify-center gap-4 p-3">
         <div className="flex justify-center group">
