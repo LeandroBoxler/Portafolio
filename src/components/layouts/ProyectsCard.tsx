@@ -1,10 +1,12 @@
 import type { ProyectsData } from "../../data/proyectsData";
-import { Card } from "../layouts/Cards";
+import { Card } from "./Cards";
 import { motion } from "framer-motion";
 
 interface ProyectsProps extends ProyectsData {
   onClosed: (e: string) => void;
   className?: string;
+  zIndex:number
+  onClick:()=>void
 }
 
 export const ProyectsCard = ({
@@ -14,6 +16,8 @@ export const ProyectsCard = ({
   url,
   img,
   id,
+  onClick,
+  zIndex,
   onClosed,
   className,
 }: ProyectsProps) => {
@@ -22,6 +26,8 @@ export const ProyectsCard = ({
       title={title}
       onClosed={() => onClosed(id)}
       classNameTitle="bg-[#000080] text-white"
+      onClick={onClick}
+      zIndex={zIndex}
       className={`${className}!bg-[#C0C0C0] w-full max-w-[600px]`}
     >
       <div className="relative group">

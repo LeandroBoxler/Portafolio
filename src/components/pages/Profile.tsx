@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Card } from "../layouts/Cards";
 import type { ProfileData } from "../../data/profileData";
-import type { HeaderMenu } from "../../data/menuHeader";
+import type { ItemsHeader } from "../../data/menuHeader";
 
 interface ProfileProp extends ProfileData {
-  onClosed: (name: HeaderMenu) => void;
+  onClosed: (name: ItemsHeader) => void;
   className?: string;
+  zIndex: number;
+  onClick: () => void;
 }
 
 export const Profile = ({
@@ -15,6 +17,8 @@ export const Profile = ({
   name,
   onClosed,
   className,
+  zIndex,
+  onClick,
 }: ProfileProp) => {
   const [showFullInfo, setShowFullInfo] = useState(false);
   const maxPreviewLength = 72;
@@ -29,7 +33,9 @@ export const Profile = ({
       title="Perfil"
       classNameTitle="bg-gradient-to-r from-indigo-800 to-purple-800 text-white py-2 px-4"
       onClosed={() => onClosed("profile")}
-      className={`${className} w-full sm:w-[50%] md:w-[30%] lg:w-[30%] min-w-[250px]`}
+      className={`${className} w-full lg:w-[30%] min-w-[250px]`}
+       zIndex={zIndex}
+      onClick={onClick}
     >
       <div className="flex flex-col justify-center gap-4 p-3">
         <div className="flex justify-center group">
@@ -52,7 +58,7 @@ export const Profile = ({
 
         <div>
           <p className="font-bold text-indigo-700 text-sm">Sobre mí</p>
-          <div className="border border-indigo-100 w-full p-3 bg-indigo-50 rounded-md mt-1">
+<div className={`break-words overflow-y-auto ${!showFullInfo ? "line-clamp-3" : "max-h-[60vh]"}`}>
             <p className={`break-words ${!showFullInfo ? "line-clamp-3" : ""}`}>
               {info}
             </p>

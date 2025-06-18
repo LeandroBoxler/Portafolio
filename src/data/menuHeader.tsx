@@ -6,7 +6,7 @@ import {
   FaUser,
 } from "react-icons/fa";
 
-export type HeaderMenu =
+export type ItemsHeader =
   | "profile"
   | "projects"
   | "technology"
@@ -16,7 +16,7 @@ export type HeaderMenu =
 export interface MenuHeader {
   text: string;
   icon: React.ReactNode;
-  active: HeaderMenu;
+  active: ItemsHeader;
 }
 export const optionsMenuProps: MenuHeader[] = [
   { text: "Perfil", icon: <FaUser />, active: "profile" },

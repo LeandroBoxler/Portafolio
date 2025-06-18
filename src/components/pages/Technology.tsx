@@ -1,14 +1,16 @@
-import type { HeaderMenu } from "../../data/menuHeader";
+import type { ItemsHeader } from "../../data/menuHeader";
 import type { Category, TechnologyData } from "../../data/technologyData";
 import { Card } from "../layouts/Cards";
 
 interface Props {
   technologies: TechnologyData[];
-  onClosed: (name: HeaderMenu) => void;
+  onClosed: (name: ItemsHeader) => void;
   className?: string;
+  onClick:()=>void
+  zIndex:number
 }
 
-export const Technology = ({ technologies, onClosed, className }: Props) => {
+export const Technology = ({ technologies, onClosed, className,onClick,zIndex }: Props) => {
   const categories: Category[] = ["Lenguajes", "Frameworks", "Herramientas"];
 
   return (
@@ -17,6 +19,8 @@ export const Technology = ({ technologies, onClosed, className }: Props) => {
       classNameTitle="bg-indigo-800 text-white"
       onClosed={() => onClosed("technology")}
       className={`${className}`}
+      zIndex={zIndex}
+      onClick={onClick}
     >
       <div className="">
         {categories.map((category) => {

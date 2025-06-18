@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header } from "./components/pages/Header";
+import { Header } from "./components/layouts/Header";
 import { technologies } from "./data/technologyData";
 import { contactProps } from "./data/contactData";
 import { profileProps } from "./data/profileData";
@@ -11,17 +11,17 @@ import { Proyect } from "./components/pages/Proyect";
 import { proyectProps } from "./data/proyectsData";
 import { Education } from "./components/pages/Education";
 import { motion } from "framer-motion";
-import { ProyectsCard } from "./components/pages/ProyectsCard";
-import { IconsCel } from "./components/pages/IconsCel";
-import type { HeaderMenu } from "./data/menuHeader";
+import { ProyectsCard } from "./components/layouts/ProyectsCard";
+import type { ItemsHeader } from "./data/menuHeader";
 import { Zindex } from "./zIndex";
+import { IconsCel } from "./components/layouts/IconsCel";
 
 export function App() {
   const [openWindowProyect, setOpenWindowProyect] = useState<string[]>([]);
-  const [openWindow, setOpenWindow] = useState<HeaderMenu[]>([]);
+  const [openWindow, setOpenWindow] = useState<ItemsHeader[]>([]);
   const { bringToFront, getZIndex } = Zindex();
 
-  const toggleOpenWindow = (name: HeaderMenu) => {
+  const toggleOpenWindow = (name: ItemsHeader) => {
     setOpenWindow((prev) =>
       prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]
     );
@@ -47,6 +47,8 @@ export function App() {
           (e) =>
             openWindowProyect.includes(e.id) && (
               <ProyectsCard
+              onClick={()=> bringToFront(e.id)}
+              zIndex={getZIndex(e.id)}
                 onClosed={toggleOpenWindowProyect}
                 description={e.description}
                 tecnoligies={e.tecnoligies}
@@ -59,35 +61,45 @@ export function App() {
             )
         )}
 
-        <IconsCel openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
+        <IconsCel openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} 
+        />
 
         {openWindow.includes("profile") && (
-          <Profile {...profileProps} onClosed={toggleOpenWindow} />
+          <Profile {...profileProps} onClosed={toggleOpenWindow}
+
+           onClick={() => bringToFront("profile")}
+  zIndex={getZIndex("profile")} />
         )}
         {openWindow.includes("projects") && (
           <Proyect
             toggleOpenWindowProyect={toggleOpenWindowProyect}
             proyects={proyectProps}
             open={openWindowProyect}
+                                  onClosed={toggleOpenWindow}
+
+             onClick={() => bringToFront("projects")}
+              zIndex={getZIndex("projects")}
           />
         )}
         {openWindow.includes("technology") && (
           <Technology
-            className="z-10"
+      
             technologies={technologies}
             onClosed={toggleOpenWindow}
+             onClick={() => bringToFront("technology")}
+  zIndex={getZIndex("technology")}
           />
         )}
         {openWindow.includes("contact") && (
-          <Contact {...contactProps} onClosed={toggleOpenWindow} zIndex={5} />
+          <Contact {...contactProps} onClosed={toggleOpenWindow}  zIndex={getZIndex("contact")} onClick={() => bringToFront("contact")} />
         )}
         {openWindow.includes("education") && (
           <Education
-            id={1}
+           
             educations={educationProps}
-            onClick={() => bringToFront("1")}
+            onClick={() => bringToFront("education")}
             onClosed={toggleOpenWindow}
-            zIndex={getZIndex("1")}
+            zIndex={getZIndex("education")}
           />
         )}
       </motion.div>
@@ -95,14 +107,3 @@ export function App() {
   );
 }
 
-{
-  /* {order.map((id, index) => (
-          <Cards
-            key={id}
-            limitDragAndDrop={limitDragAndDrop}
-            text="kijholk"
-            onClick={()=>bringToFront}
-            zIndex={index}
-          />
-        ))} */
-}

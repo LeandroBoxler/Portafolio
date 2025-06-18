@@ -1,11 +1,13 @@
 import type { ContactData } from "../../data/contactData";
-import type { HeaderMenu } from "../../data/menuHeader";
+import type { ItemsHeader } from "../../data/menuHeader";
 import { Card } from "../layouts/Cards";
 
 interface ContactProps extends ContactData {
-  onClosed: (name: HeaderMenu) => void;
+  onClosed: (name: ItemsHeader) => void;
   className?: string;
   zIndex: number;
+    onClick: () => void;
+
 }
 
 export const Contact = ({
@@ -16,7 +18,9 @@ export const Contact = ({
   onClosed,
   className,
   zIndex,
+  onClick
 }: ContactProps) => {
+
   const data = [
     { label: "Correo", value: email },
     { label: "Teléfono", value: phone },
@@ -36,6 +40,8 @@ export const Contact = ({
       classNameTitle="bg-green-900 text-lime-200 shadow-lg"
       className={`${className}`}
       zIndex={zIndex}
+      onClick={onClick}
+      
     >
       {data.map((e, i) => (
         <div key={i} className="mb-3">

@@ -1,19 +1,17 @@
 import { FaGraduationCap } from "react-icons/fa";
 import type { EducationData } from "../../data/educationData";
 import { Card } from "../layouts/Cards";
-import type { HeaderMenu } from "../../data/menuHeader";
+import type { ItemsHeader } from "../../data/menuHeader";
 
 interface Props {
   educations: EducationData[];
-  onClosed: (name: HeaderMenu) => void;
+  onClosed: (name: ItemsHeader) => void;
   className?: string;
   zIndex: number;
   onClick: () => void;
-  id: number;
 }
 
 export const Education = ({
-  id,
   educations,
   onClosed,
   className,
@@ -28,6 +26,7 @@ export const Education = ({
       className={`${className}`}
       zIndex={zIndex}
       onClick={onClick}
+
     >
       <div className="space-y-2">
         {educations.map((e, i) => (
