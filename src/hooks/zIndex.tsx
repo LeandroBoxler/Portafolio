@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-export const Zindex = () => {
+export const useZIndex = () => {
   const [zMap, setZMap] = useState<Record<string, number>>({});
   const zCount = useRef(100);
 

@@ -13,17 +13,20 @@ import { Education } from "./components/pages/Education";
 import { motion } from "framer-motion";
 import { ProyectsCard } from "./components/layouts/ProyectsCard";
 import type { ItemsHeader } from "./data/menuHeader";
-import { Zindex } from "./zIndex";
 import { IconsCel } from "./components/layouts/IconsCel";
+import { useZIndex } from "./hooks/zIndex";
 
 export function App() {
   const [openWindowProyect, setOpenWindowProyect] = useState<string[]>([]);
   const [openWindow, setOpenWindow] = useState<ItemsHeader[]>([]);
-  const { bringToFront, getZIndex } = Zindex();
+  const { bringToFront, getZIndex } = useZIndex();
 
   const toggleOpenWindow = (name: ItemsHeader) => {
-    setOpenWindow((prev) =>
-      prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]
+    setOpenWindow(
+      (prev) => (
+        bringToFront(name),
+        prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]
+      )
     );
   };
   const toggleOpenWindowProyect = (name: string) => {
@@ -47,8 +50,8 @@ export function App() {
           (e) =>
             openWindowProyect.includes(e.id) && (
               <ProyectsCard
-              onClick={()=> bringToFront(e.id)}
-              zIndex={getZIndex(e.id)}
+                onClick={() => bringToFront(e.id)}
+                zIndex={getZIndex(e.id)}
                 onClosed={toggleOpenWindowProyect}
                 description={e.description}
                 tecnoligies={e.tecnoligies}
@@ -61,41 +64,44 @@ export function App() {
             )
         )}
 
-        <IconsCel openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} 
-        />
+        <IconsCel openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
 
         {openWindow.includes("profile") && (
-          <Profile {...profileProps} onClosed={toggleOpenWindow}
-
-           onClick={() => bringToFront("profile")}
-  zIndex={getZIndex("profile")} />
+          <Profile
+            {...profileProps}
+            onClosed={toggleOpenWindow}
+            onClick={() => bringToFront("profile")}
+            zIndex={getZIndex("profile")}
+          />
         )}
         {openWindow.includes("projects") && (
           <Proyect
             toggleOpenWindowProyect={toggleOpenWindowProyect}
             proyects={proyectProps}
             open={openWindowProyect}
-                                  onClosed={toggleOpenWindow}
-
-             onClick={() => bringToFront("projects")}
-              zIndex={getZIndex("projects")}
+            onClosed={toggleOpenWindow}
+            onClick={() => bringToFront("projects")}
+            zIndex={getZIndex("projects")}
           />
         )}
         {openWindow.includes("technology") && (
           <Technology
-      
             technologies={technologies}
             onClosed={toggleOpenWindow}
-             onClick={() => bringToFront("technology")}
-  zIndex={getZIndex("technology")}
+            onClick={() => bringToFront("technology")}
+            zIndex={getZIndex("technology")}
           />
         )}
         {openWindow.includes("contact") && (
-          <Contact {...contactProps} onClosed={toggleOpenWindow}  zIndex={getZIndex("contact")} onClick={() => bringToFront("contact")} />
+          <Contact
+            {...contactProps}
+            onClosed={toggleOpenWindow}
+            zIndex={getZIndex("contact")}
+            onClick={() => bringToFront("contact")}
+          />
         )}
         {openWindow.includes("education") && (
           <Education
-           
             educations={educationProps}
             onClick={() => bringToFront("education")}
             onClosed={toggleOpenWindow}
@@ -106,4 +112,3 @@ export function App() {
     </div>
   );
 }
-
