@@ -9,7 +9,6 @@ interface ContactProps extends ContactData {
   zIndex: number;
   onClick: () => void;
   dragConstraints: RefObject<HTMLDivElement | null>;
-
 }
 
 export const Contact = ({
@@ -21,9 +20,8 @@ export const Contact = ({
   className,
   zIndex,
   onClick,
-  dragConstraints
+  dragConstraints,
 }: ContactProps) => {
-
   const data = [
     { label: "Correo", value: email },
     { label: "Teléfono", value: phone },
@@ -41,11 +39,10 @@ export const Contact = ({
       onClosed={() => onClosed("contact")}
       title="Contactos"
       classNameTitle="bg-green-900 text-lime-200 shadow-lg"
-      className={`${className}`}
+      className={`${className} lg:right-5 `}
       zIndex={zIndex}
       onClick={onClick}
       limitDragAndDrop={dragConstraints}
-      
     >
       {data.map((e, i) => (
         <div key={i} className="mb-3">

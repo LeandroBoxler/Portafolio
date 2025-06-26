@@ -36,7 +36,7 @@ export const Profile = ({
       title="Perfil"
       classNameTitle="bg-gradient-to-r from-indigo-800 to-purple-800 text-white py-2 px-4"
       onClosed={() => onClosed("profile")}
-      className={`${className} w-full lg:w-[30%] min-w-[250px]`}
+      className={`${className} w-full lg:top-0 lg:w-[30%] min-w-[250px]`}
       zIndex={zIndex}
       onClick={onClick}
     >

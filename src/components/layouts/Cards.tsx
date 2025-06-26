@@ -124,7 +124,7 @@ export const Card = ({
       exit="exit"
       onMouseDown={onClick}
       style={{ position: "absolute", zIndex }}
-      className={`border right-1/2 top-1  bg-white border-b-[4px] border-t-[4px] border-b-[#3D5361] border-t-[#DCDCDC] ${className}`}
+      className={`border bg-white border-b-[4px] border-t-[4px] border-b-[#3D5361] border-t-[#DCDCDC] ${className}`}
     >
       <div
         onPointerDown={(e) => dragControls.start(e)}
