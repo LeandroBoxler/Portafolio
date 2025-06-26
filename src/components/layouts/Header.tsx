@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { SelectsHeader } from "./SelectsHeader";
 import { optionsMenuProps, type ItemsHeader } from "../../data/menuHeader";
 
@@ -16,8 +16,8 @@ export const Header = ({ openWindow, toggleOpenWindow }: HeaderProps) => {
     };
 
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   if (!showHeader) return null;
