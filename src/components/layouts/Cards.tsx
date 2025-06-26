@@ -27,10 +27,11 @@ export const Card = ({
   zIndex,
 }: Props) => {
   const dragControls = useDragControls();
-  const [mobile, SetMobile] = useState(false);
   const [minimize, setMinimize] = useState(true);
   const controls = useAnimation();
-
+  const [mobile, SetMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 1024 : false
+  );
   useEffect(() => {
     controls.start("animate");
   }, []);
@@ -42,14 +43,13 @@ export const Card = ({
       controls.start(cardsMobile.maximize);
     }
   }, [minimize]);
+
   useEffect(() => {
     const checkIfMobile = () => {
       SetMobile(window.innerWidth < 1024);
     };
 
-    checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
-
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 

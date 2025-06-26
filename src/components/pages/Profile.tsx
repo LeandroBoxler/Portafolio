@@ -43,7 +43,7 @@ export const Profile = ({
       <div className="flex flex-col justify-center gap-4 p-3">
         <div className="flex justify-center group">
           <img
-            src={`./public/${img}`}
+            src={`/${img}`}
             className="rounded-full border-4 border-indigo-100 w-[50%] max-w-[150px] aspect-square
                        group-hover:border-indigo-300 shadow-md"
             alt="Perfil"
@@ -63,7 +63,7 @@ export const Profile = ({
           <p className="font-bold text-indigo-700 text-sm">Sobre mí</p>
           <div
             className={`break-words overflow-y-auto h-full  ${
-              !showFullInfo ? "line-clamp-3" : "max-h-[25vh]"
+              !showFullInfo ? "line-clamp-3" : "max-h-[30vh]"
             }`}
           >
             <p className={`break-words ${!showFullInfo ? "line-clamp-3" : ""}`}>
