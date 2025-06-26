@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const DetectedMovile = (breakpoint = 1024) => {
+export const DetectedMobile = (breakpoint = 1024) => {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {

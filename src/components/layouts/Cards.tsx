@@ -3,7 +3,7 @@ import { cardsMobile, openMenu } from "../../animations/animations";
 import { FaTimes } from "react-icons/fa";
 import { useEffect, useState, type ReactNode, type RefObject } from "react";
 import { BsArrowsAngleExpand } from "react-icons/bs";
-import { DetectedMovile } from "../../hooks/detectedMovile";
+import { DetectedMobile } from "../../hooks/detectedMobile";
 
 interface Props {
   onClick?: () => void;
@@ -26,7 +26,7 @@ export const Card = ({
   limitDragAndDrop,
   zIndex,
 }: Props) => {
-  const isMobile = DetectedMovile();
+  const isMobile = DetectedMobile();
   const dragControls = useDragControls();
   const [minimize, setMinimize] = useState(true);
   const controls = useAnimation();
