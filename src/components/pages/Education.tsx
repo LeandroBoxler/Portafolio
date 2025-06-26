@@ -26,7 +26,7 @@ export const Education = ({
       title="Educación"
       classNameTitle="bg-[#008080] text-white border-t-2 border-l-2 border-t-[#7F9DB9] border-l-[#7F9DB9] border-b-2 border-r-2 border-b-[#003366] border-r-[#003366] px-4 py-1"
       onClosed={() => onClosed("education")}
-      className={`lg:left-1  ${className}`}
+      className={`lg:bottom-[20%]  ${className}`}
       zIndex={zIndex}
       onClick={onClick}
       limitDragAndDrop={dragConstraints}

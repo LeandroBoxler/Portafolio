@@ -3,6 +3,7 @@ import { cardsMobile, openMenu } from "../../animations/animations";
 import { FaTimes } from "react-icons/fa";
 import { useEffect, useState, type ReactNode, type RefObject } from "react";
 import { BsArrowsAngleExpand } from "react-icons/bs";
+import { DetectedMovile } from "../../hooks/detectedMovile";
 
 interface Props {
   onClick?: () => void;
@@ -23,15 +24,13 @@ export const Card = ({
   classNameTitle,
   onClosed,
   limitDragAndDrop,
-
   zIndex,
 }: Props) => {
+  const isMobile = DetectedMovile();
   const dragControls = useDragControls();
   const [minimize, setMinimize] = useState(true);
   const controls = useAnimation();
-  const [mobile, SetMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 1024 : false
-  );
+
   useEffect(() => {
     controls.start("animate");
   }, []);
@@ -42,23 +41,16 @@ export const Card = ({
     } else {
       controls.start(cardsMobile.maximize);
     }
-  }, [minimize]);
+  }, [minimize, controls]);
 
-  useEffect(() => {
-    const checkIfMobile = () => {
-      SetMobile(window.innerWidth < 1024);
-    };
+  if (isMobile === null) return null;
 
-    window.addEventListener("resize", checkIfMobile);
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
-
-  if (mobile) {
+  if (isMobile) {
     return (
       <motion.div
         drag="y"
         dragControls={dragControls}
-        dragListener={minimize ? true : false}
+        dragListener={minimize}
         dragConstraints={limitDragAndDrop}
         dragMomentum={false}
         dragElastic={0.1}
@@ -70,11 +62,11 @@ export const Card = ({
         initial={{ height: "auto" }}
         exit="exit"
         onMouseDown={onClick}
-        style={{ position: "fixed", zIndex, touchAction: "none" }}
-        className={` rounded-3xl right-0 top-0 w-full overflow-hidden shadow-2xl bg-white ${className}`}
+        style={{ position: "absolute", zIndex, touchAction: "none" }}
+        className={`right-0 top-0 w-full overflow-hidden shadow-2xl bg-white ${className}`}
       >
         <div
-          className={`bg-gray-100 px-4 py-3 flex justify-between items-center border-b  border-gray-200 gap-2 ${classNameTitle}`}
+          className={`bg-gray-100 px-4 py-3 flex justify-between border-b border-gray-200 gap-2 ${classNameTitle}`}
         >
           <p className="select-none flex-1 font-medium text-gray-800">
             {title}
@@ -94,13 +86,13 @@ export const Card = ({
           </button>
         </div>
 
-        <div className={`bg-white p-4  flex flex-col mt-64"} p-10`}>
+        <div className={`bg-white p-4 flex flex-col ${minimize ? "" : "mb-0"}`}>
           {children}
         </div>
         <div className="p-10">
           <button
             onClick={onClosed}
-            className="py-3 px-8  bg-gray-800 text-white w-full rounded-full flex items-center justify-center shadow-lg"
+            className="py-3 px-8 bg-gray-800 text-white w-full rounded-full flex items-center justify-center shadow-lg"
           >
             <FaTimes className="mr-2" />
             Cerrar
