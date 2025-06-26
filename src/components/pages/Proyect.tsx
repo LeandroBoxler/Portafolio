@@ -18,6 +18,7 @@ interface Props {
   toggleOpenWindowProyect: (id: string) => void;
   open: string[];
   onClosed: (name: ItemsHeader) => void;
+  
 }
 
 export const Proyect = ({

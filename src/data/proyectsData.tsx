@@ -8,18 +8,27 @@ export interface ProyectsData{
 }
 export const proyectProps:ProyectsData[]=[ {
     id:"1",
-    title:"Septiembre 2023 - Mayo 2024",
-    description:"Programador FullStack",
-    tecnoligies:["JavaScript"],
-    url:"www.com.ar",
-    img:""
+    title:"Sportfit",
+    description:"Un e-commerce de ropa deportiva. Proyecto final del curso de FullStack en el cual utilizamos todo lo aprendido durante la cursada",
+    tecnoligies:["Javascript","Node.js", "Express", "HTML5", "CSS", "MySQL"],
+    url:"https://github.com/PaolaMoriconi/G1-SportFit",
+    img:"./public/Sportfit.png"
 
 },
 {
     id:"2",
-    description:"Julio 2024 - Agosto 2024",
-    title:"Curso de Angular",
-    tecnoligies:["javaScript"],
-    url:"www.com.ar"
+    description:"Es una pagina la cual muestra datos de campeones del juego league of legends.",
+    title:"League of Data",
+    tecnoligies:["TypeScript","Angular","Scss"],
+    url:"https://github.com/LeandroBoxler/LeagueOfData.git",
+    img:"./public/LeagueOfData.png"
+
+},{
+    id:"3",
+    description:"Es un e-commerce parecido a MercadoLibre utilizando un JSON como base de datos",
+    title:"Mercado Liebre",
+    tecnoligies:["Ejs","javaScript","Css"],
+    url:"https://github.com/LeandroBoxler/mercadoLiebre",
+    img:"./public/MercadoLiebre.png"
 
 }]

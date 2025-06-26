@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Header } from "./components/layouts/Header";
 import { technologies } from "./data/technologyData";
 import { contactProps } from "./data/contactData";
@@ -20,7 +20,6 @@ export function App() {
   const [openWindowProyect, setOpenWindowProyect] = useState<string[]>([]);
   const [openWindow, setOpenWindow] = useState<ItemsHeader[]>([]);
   const { bringToFront, getZIndex } = useZIndex();
-
   const toggleOpenWindow = (name: ItemsHeader) => {
     setOpenWindow(
       (prev) => (
@@ -34,17 +33,19 @@ export function App() {
       prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]
     );
   };
+  const containerRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className="h-screen w-screen overflow-hidden font-pixel">
       <Header openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
 
       <motion.div
-        className="relative h-full w-full bg-no-repeat"
-        style={{ backgroundImage: "url('/light.png')" }}
+        className="relative h-full w-full bg-cover bg-center"
+        style={{ backgroundImage: "url('/fondo.png')" }}
         initial={{ width: 0 }}
         animate={{ width: "100%" }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
+        ref={containerRef}
       >
         {proyectProps.map(
           (e) =>
@@ -60,6 +61,8 @@ export function App() {
                 img={e.img}
                 id={e.id}
                 key={e.id}
+                dragConstraints={containerRef}
+
               />
             )
         )}
@@ -72,6 +75,9 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("profile")}
             zIndex={getZIndex("profile")}
+                        dragConstraints={containerRef}
+
+
           />
         )}
         {openWindow.includes("projects") && (
@@ -82,6 +88,7 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("projects")}
             zIndex={getZIndex("projects")}
+
           />
         )}
         {openWindow.includes("technology") && (
@@ -90,6 +97,8 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("technology")}
             zIndex={getZIndex("technology")}
+                        dragConstraints={containerRef}
+
           />
         )}
         {openWindow.includes("contact") && (
@@ -98,6 +107,7 @@ export function App() {
             onClosed={toggleOpenWindow}
             zIndex={getZIndex("contact")}
             onClick={() => bringToFront("contact")}
+            dragConstraints={containerRef}
           />
         )}
         {openWindow.includes("education") && (
@@ -106,6 +116,8 @@ export function App() {
             onClick={() => bringToFront("education")}
             onClosed={toggleOpenWindow}
             zIndex={getZIndex("education")}
+                        dragConstraints={containerRef}
+
           />
         )}
       </motion.div>

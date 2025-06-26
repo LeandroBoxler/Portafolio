@@ -1,3 +1,4 @@
+import type { RefObject } from "react";
 import type { ProyectsData } from "../../data/proyectsData";
 import { Card } from "./Cards";
 import { motion } from "framer-motion";
@@ -7,6 +8,8 @@ interface ProyectsProps extends ProyectsData {
   className?: string;
   zIndex:number
   onClick:()=>void
+  dragConstraints: RefObject<HTMLDivElement | null>;
+  
 }
 
 export const ProyectsCard = ({
@@ -20,6 +23,7 @@ export const ProyectsCard = ({
   zIndex,
   onClosed,
   className,
+  dragConstraints
 }: ProyectsProps) => {
   return (
     <Card
@@ -29,6 +33,7 @@ export const ProyectsCard = ({
       onClick={onClick}
       zIndex={zIndex}
       className={`${className}!bg-[#C0C0C0] w-full max-w-[600px]`}
+      limitDragAndDrop={dragConstraints}
     >
       <div className="relative group">
         <div
@@ -61,6 +66,7 @@ export const ProyectsCard = ({
         <div className="flex gap-2 mt-3">
           <a
             href={url}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex-1 border-2 text-center
                       border-t-white border-l-white 
@@ -70,15 +76,7 @@ export const ProyectsCard = ({
           >
             Visitar Proyecto
           </a>
-          <button
-            className="flex-1 border-2
-                      border-t-white border-l-white 
-                      border-b-[#808080] border-r-[#808080]
-                      bg-[#C0C0C0] hover:bg-[#E0E0E0] 
-                      text-black text-xs p-2"
-          >
-            Detalles
-          </button>
+      
         </div>
       </div>
     </Card>

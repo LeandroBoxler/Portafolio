@@ -1,3 +1,4 @@
+import type { RefObject } from "react";
 import type { ContactData } from "../../data/contactData";
 import type { ItemsHeader } from "../../data/menuHeader";
 import { Card } from "../layouts/Cards";
@@ -6,7 +7,8 @@ interface ContactProps extends ContactData {
   onClosed: (name: ItemsHeader) => void;
   className?: string;
   zIndex: number;
-    onClick: () => void;
+  onClick: () => void;
+  dragConstraints: RefObject<HTMLDivElement | null>;
 
 }
 
@@ -18,7 +20,8 @@ export const Contact = ({
   onClosed,
   className,
   zIndex,
-  onClick
+  onClick,
+  dragConstraints
 }: ContactProps) => {
 
   const data = [
@@ -41,6 +44,7 @@ export const Contact = ({
       className={`${className}`}
       zIndex={zIndex}
       onClick={onClick}
+      limitDragAndDrop={dragConstraints}
       
     >
       {data.map((e, i) => (

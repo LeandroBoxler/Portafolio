@@ -16,6 +16,7 @@ export const SelectsHeader = ({
   return (
     <div
       className={`bg-[#C0C0C0] 
+        select-none
                    border-[4px]
                    border-t-white border-l-white 
                    border-b-[#808080] border-r-[#808080]

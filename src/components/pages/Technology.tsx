@@ -1,3 +1,4 @@
+import type { RefObject } from "react";
 import type { ItemsHeader } from "../../data/menuHeader";
 import type { Category, TechnologyData } from "../../data/technologyData";
 import { Card } from "../layouts/Cards";
@@ -8,9 +9,11 @@ interface Props {
   className?: string;
   onClick:()=>void
   zIndex:number
+    dragConstraints: RefObject<HTMLDivElement | null>;
+  
 }
 
-export const Technology = ({ technologies, onClosed, className,onClick,zIndex }: Props) => {
+export const Technology = ({ technologies, onClosed, className,onClick,zIndex,dragConstraints }: Props) => {
   const categories: Category[] = ["Lenguajes", "Frameworks", "Herramientas"];
 
   return (
@@ -21,6 +24,7 @@ export const Technology = ({ technologies, onClosed, className,onClick,zIndex }:
       className={`${className}`}
       zIndex={zIndex}
       onClick={onClick}
+      limitDragAndDrop={dragConstraints}
     >
       <div className="">
         {categories.map((category) => {

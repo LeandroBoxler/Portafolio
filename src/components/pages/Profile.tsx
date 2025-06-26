@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type RefObject } from "react";
 import { Card } from "../layouts/Cards";
 import type { ProfileData } from "../../data/profileData";
 import type { ItemsHeader } from "../../data/menuHeader";
@@ -8,6 +8,8 @@ interface ProfileProp extends ProfileData {
   className?: string;
   zIndex: number;
   onClick: () => void;
+    dragConstraints: RefObject<HTMLDivElement | null>;
+  
 }
 
 export const Profile = ({
@@ -19,6 +21,7 @@ export const Profile = ({
   className,
   zIndex,
   onClick,
+  dragConstraints
 }: ProfileProp) => {
   const [showFullInfo, setShowFullInfo] = useState(false);
   const maxPreviewLength = 72;
@@ -30,6 +33,7 @@ export const Profile = ({
 
   return (
     <Card
+    limitDragAndDrop={dragConstraints}
       title="Perfil"
       classNameTitle="bg-gradient-to-r from-indigo-800 to-purple-800 text-white py-2 px-4"
       onClosed={() => onClosed("profile")}

@@ -2,6 +2,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import type { EducationData } from "../../data/educationData";
 import { Card } from "../layouts/Cards";
 import type { ItemsHeader } from "../../data/menuHeader";
+import type { RefObject } from "react";
 
 interface Props {
   educations: EducationData[];
@@ -9,6 +10,8 @@ interface Props {
   className?: string;
   zIndex: number;
   onClick: () => void;
+    dragConstraints: RefObject<HTMLDivElement | null>;
+  
 }
 
 export const Education = ({
@@ -17,6 +20,7 @@ export const Education = ({
   className,
   zIndex,
   onClick,
+  dragConstraints
 }: Props) => {
   return (
     <Card
@@ -26,7 +30,7 @@ export const Education = ({
       className={`${className}`}
       zIndex={zIndex}
       onClick={onClick}
-
+limitDragAndDrop={dragConstraints}
     >
       <div className="space-y-2">
         {educations.map((e, i) => (
