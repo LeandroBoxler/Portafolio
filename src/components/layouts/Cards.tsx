@@ -1,8 +1,9 @@
 import { motion, useAnimation, useDragControls } from "framer-motion";
 import { cardsMobile, openMenu } from "../../animations/animations";
-import { FaTimes, FaWindowMinimize } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { useEffect, useState, type ReactNode, type RefObject } from "react";
-
+import { BsArrowsAngleExpand } from "react-icons/bs";
+import { DetectedMobile } from "../../hooks/detectedMobile";
 
 interface Props {
   onClick?: () => void;
@@ -12,26 +13,21 @@ interface Props {
   classNameTitle?: string;
   onClosed?: () => void;
   zIndex?: number;
-    limitDragAndDrop?: RefObject<HTMLDivElement | null>;
-
-  
+  limitDragAndDrop?: RefObject<HTMLDivElement | null>;
 }
 
 export const Card = ({
-  
   onClick,
   children,
   title,
   className,
   classNameTitle,
   onClosed,
-    limitDragAndDrop,
-  
+  limitDragAndDrop,
   zIndex,
-  
 }: Props) => {
+  const isMobile = DetectedMobile();
   const dragControls = useDragControls();
-  const [mobile, SetMobile] = useState(false);
   const [minimize, setMinimize] = useState(true);
   const controls = useAnimation();
 
@@ -45,25 +41,17 @@ export const Card = ({
     } else {
       controls.start(cardsMobile.maximize);
     }
-  }, [minimize]);
-  useEffect(() => {
-    const checkIfMobile = () => {
-      SetMobile(window.innerWidth < 1024);
-    };
+  }, [minimize, controls]);
 
-    checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
+  if (isMobile === null) return null;
 
-    return () => window.removeEventListener("resize", checkIfMobile);
-  }, []);
-
-  if (mobile) {
+  if (isMobile) {
     return (
       <motion.div
         drag="y"
         dragControls={dragControls}
-        dragListener={minimize ? true : false}
-        dragConstraints ={limitDragAndDrop}
+        dragListener={minimize}
+        dragConstraints={limitDragAndDrop}
         dragMomentum={false}
         dragElastic={0.1}
         variants={{
@@ -74,11 +62,11 @@ export const Card = ({
         initial={{ height: "auto" }}
         exit="exit"
         onMouseDown={onClick}
-        style={{ position: "fixed", zIndex, touchAction: "none" }}
-        className={` rounded-3xl right-0 top-0 w-full  overflow-hidden shadow-2xl bg-white ${className}`}
+        style={{ position: "absolute", zIndex, touchAction: "none" }}
+        className={`right-0 top-0 w-full overflow-hidden shadow-2xl bg-white ${className}`}
       >
         <div
-          className={`bg-gray-100 px-4 py-3 flex justify-between items-center border-b  border-gray-200 gap-2 ${classNameTitle}`}
+          className={`bg-gray-100 px-4 py-3 flex justify-between border-b border-gray-200 gap-2 ${classNameTitle}`}
         >
           <p className="select-none flex-1 font-medium text-gray-800">
             {title}
@@ -88,7 +76,7 @@ export const Card = ({
             onClick={() => setMinimize(!minimize)}
             aria-label="Minimizar"
           >
-            <FaWindowMinimize size={12} />
+            <BsArrowsAngleExpand size={12} />
           </button>
           <button
             className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600"
@@ -98,13 +86,13 @@ export const Card = ({
           </button>
         </div>
 
-        <div className={`bg-white p-4  flex flex-col mt-64"} p-10`}>
+        <div className={`bg-white p-4 flex flex-col ${minimize ? "" : "mb-0"}`}>
           {children}
         </div>
         <div className="p-10">
           <button
             onClick={onClosed}
-            className="py-3 px-8  bg-gray-800 text-white w-full rounded-full flex items-center justify-center shadow-lg"
+            className="py-3 px-8 bg-gray-800 text-white w-full rounded-full flex items-center justify-center shadow-lg"
           >
             <FaTimes className="mr-2" />
             Cerrar
@@ -119,7 +107,7 @@ export const Card = ({
       drag
       dragControls={dragControls}
       dragListener={false}
-dragConstraints={limitDragAndDrop?.current ? limitDragAndDrop : undefined}
+      dragConstraints={limitDragAndDrop?.current ? limitDragAndDrop : undefined}
       dragMomentum={false}
       dragElastic={0}
       variants={openMenu}
@@ -128,7 +116,7 @@ dragConstraints={limitDragAndDrop?.current ? limitDragAndDrop : undefined}
       exit="exit"
       onMouseDown={onClick}
       style={{ position: "absolute", zIndex }}
-      className={`border right-1/2 top-1 bg-white border-b-[4px] border-t-[4px] border-b-[#3D5361] border-t-[#DCDCDC] ${className}`}
+      className={`border bg-white border-b-[4px] border-t-[4px] border-b-[#3D5361] border-t-[#DCDCDC] ${className}`}
     >
       <div
         onPointerDown={(e) => dragControls.start(e)}

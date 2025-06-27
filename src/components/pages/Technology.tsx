@@ -7,13 +7,19 @@ interface Props {
   technologies: TechnologyData[];
   onClosed: (name: ItemsHeader) => void;
   className?: string;
-  onClick:()=>void
-  zIndex:number
-    dragConstraints: RefObject<HTMLDivElement | null>;
-  
+  onClick: () => void;
+  zIndex: number;
+  dragConstraints: RefObject<HTMLDivElement | null>;
 }
 
-export const Technology = ({ technologies, onClosed, className,onClick,zIndex,dragConstraints }: Props) => {
+export const Technology = ({
+  technologies,
+  onClosed,
+  className,
+  onClick,
+  zIndex,
+  dragConstraints,
+}: Props) => {
   const categories: Category[] = ["Lenguajes", "Frameworks", "Herramientas"];
 
   return (
@@ -21,7 +27,7 @@ export const Technology = ({ technologies, onClosed, className,onClick,zIndex,dr
       title="Habilidades Tecnologias"
       classNameTitle="bg-indigo-800 text-white"
       onClosed={() => onClosed("technology")}
-      className={`${className}`}
+      className={`${className} lg:right-[30%]`}
       zIndex={zIndex}
       onClick={onClick}
       limitDragAndDrop={dragConstraints}

@@ -8,8 +8,7 @@ interface ProfileProp extends ProfileData {
   className?: string;
   zIndex: number;
   onClick: () => void;
-    dragConstraints: RefObject<HTMLDivElement | null>;
-  
+  dragConstraints: RefObject<HTMLDivElement | null>;
 }
 
 export const Profile = ({
@@ -21,7 +20,7 @@ export const Profile = ({
   className,
   zIndex,
   onClick,
-  dragConstraints
+  dragConstraints,
 }: ProfileProp) => {
   const [showFullInfo, setShowFullInfo] = useState(false);
   const maxPreviewLength = 72;
@@ -33,18 +32,18 @@ export const Profile = ({
 
   return (
     <Card
-    limitDragAndDrop={dragConstraints}
+      limitDragAndDrop={dragConstraints}
       title="Perfil"
       classNameTitle="bg-gradient-to-r from-indigo-800 to-purple-800 text-white py-2 px-4"
       onClosed={() => onClosed("profile")}
-      className={`${className} w-full lg:w-[30%] min-w-[250px]`}
-       zIndex={zIndex}
+      className={`${className} w-full lg:top-0 lg:w-[30%] min-w-[250px]`}
+      zIndex={zIndex}
       onClick={onClick}
     >
       <div className="flex flex-col justify-center gap-4 p-3">
         <div className="flex justify-center group">
           <img
-            src={img}
+            src={`/${img}`}
             className="rounded-full border-4 border-indigo-100 w-[50%] max-w-[150px] aspect-square
                        group-hover:border-indigo-300 shadow-md"
             alt="Perfil"
@@ -62,7 +61,11 @@ export const Profile = ({
 
         <div>
           <p className="font-bold text-indigo-700 text-sm">Sobre mí</p>
-<div className={`break-words overflow-y-auto ${!showFullInfo ? "line-clamp-3" : "max-h-[60vh]"}`}>
+          <div
+            className={`break-words overflow-y-auto h-full  ${
+              !showFullInfo ? "line-clamp-3" : "max-h-[30vh]"
+            }`}
+          >
             <p className={`break-words ${!showFullInfo ? "line-clamp-3" : ""}`}>
               {info}
             </p>

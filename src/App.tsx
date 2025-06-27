@@ -33,10 +33,13 @@ export function App() {
       prev.includes(name) ? prev.filter((e) => e !== name) : [...prev, name]
     );
   };
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="h-screen w-screen overflow-hidden font-pixel">
+    <motion.div
+      ref={containerRef}
+      className="h-screen w-screen overflow-hidden font-pixel"
+    >
       <Header openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
 
       <motion.div
@@ -45,7 +48,6 @@ export function App() {
         initial={{ width: 0 }}
         animate={{ width: "100%" }}
         transition={{ duration: 1 }}
-        ref={containerRef}
       >
         {proyectProps.map(
           (e) =>
@@ -62,7 +64,6 @@ export function App() {
                 id={e.id}
                 key={e.id}
                 dragConstraints={containerRef}
-
               />
             )
         )}
@@ -75,9 +76,7 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("profile")}
             zIndex={getZIndex("profile")}
-                        dragConstraints={containerRef}
-
-
+            dragConstraints={containerRef}
           />
         )}
         {openWindow.includes("projects") && (
@@ -88,7 +87,6 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("projects")}
             zIndex={getZIndex("projects")}
-
           />
         )}
         {openWindow.includes("technology") && (
@@ -97,8 +95,7 @@ export function App() {
             onClosed={toggleOpenWindow}
             onClick={() => bringToFront("technology")}
             zIndex={getZIndex("technology")}
-                        dragConstraints={containerRef}
-
+            dragConstraints={containerRef}
           />
         )}
         {openWindow.includes("contact") && (
@@ -116,11 +113,10 @@ export function App() {
             onClick={() => bringToFront("education")}
             onClosed={toggleOpenWindow}
             zIndex={getZIndex("education")}
-                        dragConstraints={containerRef}
-
+            dragConstraints={containerRef}
           />
         )}
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
