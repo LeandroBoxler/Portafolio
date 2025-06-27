@@ -12,7 +12,7 @@ export const proyectProps:ProyectsData[]=[ {
     description:"Un e-commerce de ropa deportiva. Proyecto final del curso de FullStack en el cual utilizamos todo lo aprendido durante la cursada",
     tecnoligies:["Javascript","Node.js", "Express", "HTML5", "CSS", "MySQL"],
     url:"https://github.com/PaolaMoriconi/G1-SportFit",
-    img:"./public/Sportfit.png"
+    img:"/Sportfit.png"
 
 },
 {
@@ -21,7 +21,7 @@ export const proyectProps:ProyectsData[]=[ {
     title:"League of Data",
     tecnoligies:["TypeScript","Angular","Scss"],
     url:"https://github.com/LeandroBoxler/LeagueOfData.git",
-    img:"./public/LeagueOfData.png"
+    img:"/LeagueOfData.png"
 
 },{
     id:"3",
@@ -29,6 +29,6 @@ export const proyectProps:ProyectsData[]=[ {
     title:"Mercado Liebre",
     tecnoligies:["Ejs","javaScript","Css"],
     url:"https://github.com/LeandroBoxler/mercadoLiebre",
-    img:"./public/MercadoLiebre.png"
+    img:"/MercadoLiebre.png"
 
 }]
