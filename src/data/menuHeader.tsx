@@ -11,7 +11,8 @@ export type ItemsHeader =
   | "projects"
   | "technology"
   | "contact"
-  | "education";
+  | "education"
+  | "experience"
 
 export interface MenuHeader {
   text: string;
@@ -35,6 +36,11 @@ export const optionsMenuProps: MenuHeader[] = [
   {
     text: "Proyectos",
     active: "projects",
+    icon: <FaTools />,
+  },
+   {
+    text: "Experiencia laboral",
+    active: "experience",
     icon: <FaTools />,
   },
 ];

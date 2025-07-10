@@ -123,9 +123,8 @@ export const Card = ({
         className={`flex justify-between items-center px-2 py-1 border-[4px] border-l-[#7F9DB9] border-t-[#7F9DB9] border-b-black border-r-black w-full ${classNameTitle}`}
       >
         <p className="select-none flex-1">{title}</p>
-        <button
-          className="border-2 min-w-[24px] max-w-[32px] aspect-square text-center border-t-white bg-red-500 border-l-white border-r-gray-500 border-b-gray-500 text-black font-bold flex items-center justify-center"
-          onClick={onClosed}
+                    <button className="w-5 h-5 flex items-center justify-center border-2 border-t-white border-l-white border-r-gray-500 border-b-gray-500 bg-[#c0c0c0] text-black font-bold"
+  onClick={onClosed}
         >
           <FaTimes />
         </button>

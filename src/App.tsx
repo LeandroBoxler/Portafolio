@@ -15,6 +15,8 @@ import { ProyectsCard } from "./components/layouts/ProyectsCard";
 import type { ItemsHeader } from "./data/menuHeader";
 import { IconsCel } from "./components/layouts/IconsCel";
 import { useZIndex } from "./hooks/zIndex";
+import { Experience } from "./components/pages/Experience";
+import { workExperience } from "./data/experienceData";
 
 export function App() {
   const [openWindowProyect, setOpenWindowProyect] = useState<string[]>([]);
@@ -113,6 +115,15 @@ export function App() {
             onClick={() => bringToFront("education")}
             onClosed={toggleOpenWindow}
             zIndex={getZIndex("education")}
+            dragConstraints={containerRef}
+          />
+        )}
+             {openWindow.includes("experience") && (
+          <Experience
+            workExperience={workExperience}
+            onClick={() => bringToFront("experience")}
+            onClosed={toggleOpenWindow}
+            zIndex={getZIndex("experience")}
             dragConstraints={containerRef}
           />
         )}
