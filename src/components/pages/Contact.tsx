@@ -39,7 +39,7 @@ export const Contact = ({
       onClosed={() => onClosed("contact")}
       title="Contactos"
       classNameTitle="bg-green-900 text-lime-200 shadow-lg"
-      className={`${className} lg:right-5 `}
+      className={`${className} lg:right-36 xl:right-40 `}
       zIndex={zIndex}
       onClick={onClick}
       limitDragAndDrop={dragConstraints}

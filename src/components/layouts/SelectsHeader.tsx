@@ -13,24 +13,28 @@ export const SelectsHeader = ({
   onClick,
   isActive,
 }: Props) => {
+  const activeStyles = isActive
+    ? "!bg-[#B8B8B8] border-t-[#808080] border-l-[#808080] border-b-white border-r-white text-black"
+    : "";
+
   return (
     <div
       className={`bg-[#C0C0C0] 
         select-none
-                   border-[4px]
+                   border-[3px]
                    border-t-white border-l-white 
                    border-b-[#808080] border-r-[#808080]
                    hover:bg-[#000080] hover:text-white
                    active:border-[#808080] active:border-t-[#000000] active:border-l-[#000000]
-                   flex flex-col justify-center items-center
+                   flex justify-start items-center
                    w-full h-full
-                   cursor-pointer p-1 transition-all duration-100 ${className}
-                  ${isActive ? "!bg-[#000080] text-white" : ""}
+                   cursor-pointer px-3 py-1 transition-all duration-100 ${className}
+                  ${activeStyles}
 `}
       onClick={onClick}
     >
-      <span className="text-xl mb-1">{icon}</span>
-      <p className="text-xs font-bold">{text}</p>
+      <span className="text-base mr-2">{icon}</span>
+      <p className="text-xs font-bold truncate">{text}</p>
     </div>
   );
 };

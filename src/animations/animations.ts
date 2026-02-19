@@ -2,12 +2,14 @@ import type { Variants } from "framer-motion";
 
 export const openMenuProyects: Variants = {
   hidden: {
-    x: "100%",
-    transition: { duration: 0.5 },
+    y: 24,
+    opacity: 0,
+    transition: { duration: 0.25, ease: "easeOut" },
   },
   visible: {
-    x: 0,
-    transition: { duration: 0.5 },
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.25, ease: "easeOut" },
   },
 };
 

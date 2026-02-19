@@ -15,6 +15,7 @@ import { ProyectsCard } from "./components/layouts/ProyectsCard";
 import type { ItemsHeader } from "./data/menuHeader";
 import { IconsCel } from "./components/layouts/IconsCel";
 import { useZIndex } from "./hooks/zIndex";
+import { DesktopIcons } from "./components/layouts/DesktopIcons";
 
 export function App() {
   const [openWindowProyect, setOpenWindowProyect] = useState<string[]>([]);
@@ -38,12 +39,10 @@ export function App() {
   return (
     <motion.div
       ref={containerRef}
-      className="h-screen w-screen overflow-hidden font-pixel"
+      className="h-screen w-screen overflow-hidden font-pixel flex flex-col"
     >
-      <Header openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
-
       <motion.div
-        className="relative h-full w-full bg-cover bg-center"
+        className="relative flex-1 min-h-0 w-full bg-cover bg-center"
         style={{ backgroundImage: "url('/fondo.png')" }}
         initial={{ width: 0 }}
         animate={{ width: "100%" }}
@@ -67,6 +66,11 @@ export function App() {
               />
             )
         )}
+
+        <DesktopIcons
+          openWindow={openWindow}
+          toggleOpenWindow={toggleOpenWindow}
+        />
 
         <IconsCel openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
 
@@ -117,6 +121,8 @@ export function App() {
           />
         )}
       </motion.div>
+
+      <Header openWindow={openWindow} toggleOpenWindow={toggleOpenWindow} />
     </motion.div>
   );
 }

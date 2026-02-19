@@ -23,7 +23,7 @@ export const optionsMenuProps: MenuHeader[] = [
 
   { text: "Contacto", icon: <FaEnvelope />, active: "contact" },
   {
-    text: "Tecnologías",
+    text: "Tecnologia",
     icon: <FaLaptopCode />,
     active: "technology",
   },

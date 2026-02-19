@@ -44,7 +44,8 @@ export const IconsCel = ({ toggleOpenWindow }: HeaderProps) => {
       <div className="grid grid-cols-3 gap-6 w-full">
         {optionsMenuProps.map((e, i) => (
           <ViewCel
-            className="bg-[#2e2e2e65] rounded-xl aspect-square flex flex-col items-center justify-center p-2 cursor-pointer "
+            className="bg-[#2e2e2e65] rounded-xl aspect-square flex flex-col items-center justify-center p-2 cursor-pointer overflow-hidden"
+            textClassName="w-full text-center text-[10px] leading-tight whitespace-normal break-words"
             key={i}
             text={e.text}
             icon={e.icon}

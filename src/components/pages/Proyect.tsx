@@ -58,7 +58,7 @@ export const Proyect = ({
       className={`${
         isMobile
           ? "fixed inset-x-0 bottom-0 rounded-t-lg h-full"
-          : "absolute top-0 right-0 h-full w-full sm:w-80 md:w-72"
+          : "absolute bottom-0 left-0 w-80 max-h-[80vh]"
       }
         bg-[#C0C0C0] border-2 border-t-white border-l-white border-b-[#808080] border-r-[#808080]
         text-black overflow-y-auto`}
