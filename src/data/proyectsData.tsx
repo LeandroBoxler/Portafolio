@@ -13,7 +13,6 @@ export const proyectProps:ProyectsData[]=[ {
     tecnoligies:["Javascript","Node.js", "Express", "HTML5", "CSS", "MySQL"],
     url:"https://github.com/PaolaMoriconi/G1-SportFit",
     img:"/Sportfit.png"
-
 },
 {
     id:"2",
@@ -27,8 +26,8 @@ export const proyectProps:ProyectsData[]=[ {
     id:"3",
     description:"Es un e-commerce parecido a MercadoLibre utilizando un JSON como base de datos",
     title:"Mercado Liebre",
-    tecnoligies:["Ejs","javaScript","Css"],
+    tecnoligies:["Ejs","JavaScript","Css"],
     url:"https://github.com/LeandroBoxler/mercadoLiebre",
     img:"/MercadoLiebre.png"
-
-}]
+}
+]

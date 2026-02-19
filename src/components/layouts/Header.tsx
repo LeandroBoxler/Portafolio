@@ -47,7 +47,7 @@ export const Header = ({ openWindow, toggleOpenWindow }: HeaderProps) => {
           onClick={() => toggleOpenWindow("projects")}
           className="h-10 px-4 bg-[#C0C0C0] border-[3px] border-t-white border-l-white border-b-[#404040] border-r-[#404040] text-sm font-bold text-black select-none flex items-center"
         >
-          Inicio
+          Mis proyectos
         </button>
 
         <div className="h-8 w-[2px] bg-[#808080] border-l border-white" />
