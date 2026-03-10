@@ -3,6 +3,8 @@ export interface ContactData {
   phone: string;
   linkedIn: string;
   urlLinkedIn: string;
+  urlGitHub: string;
+  github: string;
 }
 
 export const contactProps: ContactData = {
@@ -10,4 +12,6 @@ export const contactProps: ContactData = {
   phone: "+541126780968",
   urlLinkedIn: "https://www.linkedin.com/in/leandro-boxler/",
   linkedIn: "linkedin.com/in/leandro-boxler/",
+  urlGitHub: "https://github.com/LeandroBoxler",
+  github: "github.com/LeandroBoxler",
 };

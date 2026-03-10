@@ -27,12 +27,12 @@ export const Technology = ({
       title="Habilidades Tecnologias"
       classNameTitle="bg-indigo-800 text-white"
       onClosed={() => onClosed("technology")}
-      className={`${className} lg:right-[30%]`}
+      className={`${className} lg:right-[30%] lg:max-h-[70vh]`}
       zIndex={zIndex}
       onClick={onClick}
       limitDragAndDrop={dragConstraints}
     >
-      <div className="">
+      <div className="retro-scroll lg:max-h-[58vh] lg:overflow-y-auto pr-1">
         {categories.map((category) => {
           const items = technologies.filter(
             (tech) => tech.category === category

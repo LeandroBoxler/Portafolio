@@ -29,5 +29,21 @@ export const proyectProps:ProyectsData[]=[ {
     tecnoligies:["Ejs","JavaScript","Css"],
     url:"https://github.com/LeandroBoxler/mercadoLiebre",
     img:"/MercadoLiebre.png"
+},{
+    id:"4",
+    description:"Es una pagina para poder subir resumenes PDF la cual tiene su propia app para movil",
+    title:"Resumenes.net",
+    tecnoligies:["ASP.Net","React","TypeScript","Flutter", "S3"],
+    url:"https://github.com/LeandroBoxler/Resumen.net.git",
+    img:"/Resumenes.png"
 }
+,{
+    id:"5",
+    description:"Aplicacion de escritorio para poner notas en tu escritorio",
+    title:"Stickies Notes",
+    tecnoligies:["Net","Avalonia","TDD","Flutter", "S3"],
+    url:"https://github.com/LeandroBoxler/StickiesNotes",
+    img:"/StickyNotes.png"
+}
+
 ]

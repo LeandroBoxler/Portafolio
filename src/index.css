@@ -7,3 +7,38 @@ body,
 #root {
   @apply h-full m-0 p-0;
 }
+
+/* Scrollbar estilo retro estatico (WebKit + Firefox) */
+.retro-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #5f5f5f #c0c0c0;
+}
+
+.retro-scroll::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.retro-scroll::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+}
+
+.retro-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a5a5a5 0%, #7d7d7d 100%);
+  border-left: 1px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7;
+  border-right: 1px solid #4f4f4f;
+  border-bottom: 1px solid #4f4f4f;
+}
+
+.retro-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #979797 0%, #6d6d6d 100%);
+}
+
+.retro-scroll::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}

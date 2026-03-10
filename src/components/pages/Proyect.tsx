@@ -61,7 +61,7 @@ export const Proyect = ({
           : "absolute bottom-0 left-0 w-80 max-h-[80vh]"
       }
         bg-[#C0C0C0] border-2 border-t-white border-l-white border-b-[#808080] border-r-[#808080]
-        text-black overflow-y-auto`}
+        text-black overflow-y-auto retro-scroll`}
       style={{ zIndex }}
       onClick={onClick}
     >

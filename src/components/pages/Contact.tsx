@@ -15,6 +15,8 @@ export const Contact = ({
   email,
   linkedIn,
   phone,
+  github,
+  urlGitHub,
   urlLinkedIn,
   onClosed,
   className,
@@ -26,6 +28,14 @@ export const Contact = ({
     { label: "Correo", value: email },
     { label: "Teléfono", value: phone },
     {
+      label: "GitHub",
+      value: (
+        <a href={urlGitHub} target="_blank" rel="noopener noreferrer">
+          {github}
+        </a>
+      ),
+    },
+     {
       label: "LinkedIn",
       value: (
         <a href={urlLinkedIn} target="_blank" rel="noopener noreferrer">
