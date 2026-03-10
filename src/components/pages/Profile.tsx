@@ -62,7 +62,7 @@ export const Profile = ({
         <div>
           <p className="font-bold text-indigo-700 text-sm">Sobre mí</p>
           <div
-            className={`break-words overflow-y-auto h-full  ${
+            className={`break-words overflow-y-auto retro-scroll h-full  ${
               !showFullInfo ? "line-clamp-3" : "max-h-[30vh]"
             }`}
           >

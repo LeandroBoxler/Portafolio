@@ -10,7 +10,7 @@ export const proyectProps:ProyectsData[]=[ {
     id:"1",
     title:"Sportfit",
     description:"Un e-commerce de ropa deportiva. Proyecto final del curso de FullStack en el cual utilizamos todo lo aprendido durante la cursada",
-    tecnoligies:["Javascript","Node.js", "Express", "HTML5", "CSS", "MySQL"],
+    tecnoligies:["Javascript","Node.js", "Express", "MySQL"],
     url:"https://github.com/PaolaMoriconi/G1-SportFit",
     img:"/Sportfit.png"
 },
