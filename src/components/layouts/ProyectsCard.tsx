@@ -42,7 +42,7 @@ export const ProyectsCard = ({
                       border-b-white border-r-white"
         >
           <img className="w-full h-48 object-cover" src={img} alt={title} />
-          <div className="absolute top-2 left-2 flex flex-wrap gap-1">
+          <div className="absolute top-2 left-2 flex flex-wrap gap-1 md:hidden">
             {tecnoligies.map((e, i) => (
               <motion.div
                 key={i}
@@ -54,6 +54,18 @@ export const ProyectsCard = ({
               </motion.div>
             ))}
           </div>
+        </div>
+        <div className="hidden md:flex flex-wrap gap-1 mt-2">
+          {tecnoligies.map((e, i) => (
+            <motion.div
+              key={i}
+              className="bg-[#000080] text-white text-xs px-2 py-1 border-2
+                        border-t-white border-l-white 
+                        border-b-[#404040] border-r-[#404040]"
+            >
+              {e}
+            </motion.div>
+          ))}
         </div>
         <div
           className="mt-2 border-2 
